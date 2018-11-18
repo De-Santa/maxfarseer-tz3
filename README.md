@@ -1,44 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Тестовое задание #3](https://maxpfrontend.ru/zametki/testovoe-zadanie-3/)
 
-## Available Scripts
+### О себе
 
-In the project directory, you can run:
+- Топалов Герман, 29 лет, Новосибирск
+- Опыт работы с React: 1 год
+- Опыт работы Frontend разработчиком: 2 года
 
-### `npm start`
+### Вопросы
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Откуда узнали о ТЗ?
+  - [ ] [VK](https://vk.com/maxpfrontend)
+  - [ ] [телеграм](https://t.me/maxpfrontend)
+  - [ ] [YouTube](https://www.youtube.com/channel/UCqJyAVWwIqPWKEkfCSP1y4Q)
+  - [x] другое: Нашел учебник по redux и с помощью него вышел на остальные ресурсы
+- Участвовали ли в ТЗ 1 / ТЗ 2
+  - [ ] Да
+  - [x] Нет
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Чек-лист решения
 
-### `npm test`
+- [ ] Авторизация через Google Sign In
+- [ ] Отображение списка новостей
+- [ ] Отображение новости в режиме чтения
+- [ ] Отображение новости в режиме редактирования
+- [ ] Удаление новости
+- [ ] Показ иконок "удалить/редактировать" только для автора
+- [ ] Роутинг и редиректы после действий
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Бонус
 
-### `npm run build`
+- [ ] Создание пользователя с вводом рекапчи
+- [ ] Форма входа для созданного пользователя (`/login`)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Проект создан с помощью [Create React App](https://github.com/facebook/create-react-app).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Установка приложения
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Склонируйте репозиторий и установите зависимости.
+```sh
+$ npm install
+```
 
-### `npm run eject`
+### Запуск приложения в режиме разработки
+```sh
+$ npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Создание "продакшн" сборки
+```sh
+$ npm run build
+```
+После выполнения задачи собранный проект появится в папке `build/`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Технический стек приложения и используемые методологии
+  - [Create React App v2.0.3](https://github.com/facebook/create-react-app)
+  - [Redux v4.0.1](https://github.com/reduxjs/redux)
+  - [React-Router v4.3.1](https://github.com/ReactTraining/react-router)
+  - [Superagent](https://github.com/visionmedia/superagent)
+  - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
+  - [BEM classes naming](https://en.bem.info/methodology/)

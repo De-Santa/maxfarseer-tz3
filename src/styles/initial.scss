@@ -1,0 +1,28 @@
+@import '../../node_modules/reset-css/sass/reset';
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}

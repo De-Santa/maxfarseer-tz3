@@ -1,0 +1,23 @@
+.button {
+  padding: 12px 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background-color: blue;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  transition: background-color .3s linear;
+  user-select: none;
+  &:focus, &:hover {
+    background-color: dodgerblue;
+  }
+  &--disabled, &:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
+}

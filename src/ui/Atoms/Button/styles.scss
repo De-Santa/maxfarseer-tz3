@@ -1,20 +1,28 @@
 .button {
+  box-sizing: border-box;
   padding: 12px 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  outline: none;
-  background-color: blue;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  outline: 2px solid #30588c;
+  background-color: transparent;
   text-decoration: none;
-  color: white;
+  color: #3d70b2;
   cursor: pointer;
   font-size: 15px;
   line-height: 1;
-  transition: background-color .3s linear;
+  font-weight: 600;
+  transition: background-color .3s, border .3s, color .3s linear;
   user-select: none;
+  -webkit-font-smoothing: antialiased;
+
   &:focus, &:hover {
-    background-color: dodgerblue;
+    color: white;
+    background-color: #30588c;
+    border: 2px solid #ffffff;
   }
   &--disabled, &:disabled {
     background-color: lightgray;

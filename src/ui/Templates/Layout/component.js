@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import T from 'prop-types'
 import bemHelper from 'utils/bem-helper'
-import { Header } from "../../Organisms/Header";
+import { Header } from "../../Organisms/Header"
+import './styles.scss'
 
 const cn = bemHelper('layout')
 
@@ -21,7 +22,7 @@ export default class Layout extends Component {
     return (
       <main {...cn()}>
         <Header mix={cn('header').className}/>
-        { children }
+        <div {...cn('content')}>{ children }</div>
       </main>
     )
   }

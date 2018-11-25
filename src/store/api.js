@@ -17,6 +17,11 @@ export const api = {
         .get(`${apiEndpoint}/feeds`)
         .then(res => res)
     ),
+    getById: feedId => (
+      request
+        .get(`${apiEndpoint}/feeds/${feedId}`)
+        .then(res => res)
+    ),
     create: (token, data) => (
       request
         .post(`${apiEndpoint}/feeds`)

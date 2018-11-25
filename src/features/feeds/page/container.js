@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {fetchFeeds} from "../../../store/feeds";
+import { fetchFeeds } from "../../../store/feeds"
+import { createFeed } from "../../../store/feed"
 import Page from './page';
 
 function mapStateToProps(state) {
-  return { ...state.feeds };
+  const { authorized } = state.authorization;
+  return { ...state.feeds, authorized };
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
-    { fetchFeeds },
+    { fetchFeeds, createFeed },
     dispatch);
   return { ...actions };
 }

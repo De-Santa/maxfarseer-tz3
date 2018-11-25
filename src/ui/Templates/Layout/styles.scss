@@ -8,8 +8,8 @@
   }
 
   &__content {
-    height: 100vh;
-    padding: 110px 10px 0;
+    min-height: 100vh;
+    padding: 130px 10px 20px;
     margin: 0 10px;
     background-color: #3d70b2;
   }

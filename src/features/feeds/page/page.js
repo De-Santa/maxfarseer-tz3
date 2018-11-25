@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import bemHelper from 'utils/bem-helper'
+import { FeedCard } from '../../../ui/Molecules/FeedCard'
 import T from 'prop-types'
+import './styles.scss'
 
-const cn = bemHelper('home-page')
+const cn = bemHelper('feeds-page')
 
 export default class FeedsPage extends Component {
   static propTypes = {
@@ -39,7 +41,13 @@ export default class FeedsPage extends Component {
           </button>
         )}
         {loading && 'Загрузка новостей'}
-        {loaded && `Новости загружены, ${payload}`}
+        {loaded && (
+          payload.length === 0
+            ? `Новостей нет =(`
+            : payload.map(feed => (
+              <FeedCard key={feed._id} mix={cn('feed-card').className} {...feed}/>
+            ))
+        )}
         {error && 'Ошибка при загрузке новостей'}
       </div>
     )

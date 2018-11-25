@@ -1,4 +1,5 @@
 import { FETCH, START, SUCCESS, ERROR  } from '../constants/common'
+import { parseDate } from '../utils/parseDate';
 
 const FEEDS = 'FEEDS'
 
@@ -32,7 +33,10 @@ export const fetchFeeds = () => (dispatch, getState, api) => {
   api.feeds.getAll()
     .then(res => {
       console.log('fetch all feeds result', res.body.feeds)
-      dispatch({ type: FETCH + FEEDS + SUCCESS, data: res.body.feeds})
+      const normalisedFeeds = res.body.feeds.length > 0
+        ? res.body.feeds.map(feed => ({...feed, createDate: parseDate(feed.createDate) }))
+        : res.body.feeds
+      dispatch({ type: FETCH + FEEDS + SUCCESS, data: normalisedFeeds})
     })
     .catch(err => {
       console.log('fetch all feeds error', err)

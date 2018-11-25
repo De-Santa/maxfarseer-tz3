@@ -11,7 +11,8 @@
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "reset-css": "^4.0.1"
+    "reset-css": "^4.0.1",
+    "superagent": "^4.0.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src/ react-scripts start",

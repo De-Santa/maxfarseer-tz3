@@ -41,7 +41,7 @@ export default class Header extends Component {
             {gApiLoading && 'Инициализация Google API'}
             {gApiError && 'Google API недоступен =('}
             {gApiLoaded
-              ? authorized ? 'Выход из приложения' : 'Вход в приложение'
+              ? authorized ? 'Выйти' : 'Войти'
               : null
             }
           </Button>

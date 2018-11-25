@@ -1,8 +1,15 @@
 .feed-card {
-  padding: 16px 24px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   background-color: #fff;
+
+  &__top, &__content, &__author {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 
   &__top {
     margin-bottom: 12px;
@@ -25,9 +32,19 @@
 
   &__content {
     margin-bottom: 16px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 1.4;
     color: rgba(0, 0, 0, 0.87);
+  }
+
+  &__author {
+    margin-top: auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #348c53;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ffffff;
   }
 }

@@ -14,6 +14,7 @@ export default class FeedsPage extends Component {
     authorized: T.bool.isRequired,
     fetchFeeds: T.func.isRequired,
     createFeed: T.func.isRequired,
+    addFeedLocally: T.func.isRequired,
     payload: T.array
   }
 
@@ -27,7 +28,7 @@ export default class FeedsPage extends Component {
   }
 
   render() {
-    const { loading, loaded, error, payload, createFeed, authorized } = this.props
+    const { loading, loaded, error, payload, createFeed, authorized, addFeedLocally } = this.props
     return (
       <div {...cn()}>
         {authorized && (
@@ -35,7 +36,7 @@ export default class FeedsPage extends Component {
             onClick={() => createFeed({
               title: 'Тест новость',
               content: `Рандомное число: ${Math.random()}`
-            })}
+            }).then(createdFeed => addFeedLocally(createdFeed))}
           >
             Создать тест-новость
           </button>

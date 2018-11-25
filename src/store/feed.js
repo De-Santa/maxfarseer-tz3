@@ -1,6 +1,4 @@
-import { FETCH, ADD, UPDATE, REMOVE, START, SUCCESS, ERROR  } from '../constants/common'
-
-const FEED = 'FEED'
+import { FETCH, START, SUCCESS, ERROR, FEED  } from '../constants/common'
 
 const initialState = {
   loading: false,
@@ -29,14 +27,16 @@ export default (feed = initialState, { type, data }) => {
 
 export const createFeed = feedData => (dispatch, getState, api) => {
   const { authorization: { token } } = getState()
-  api.feeds.create(token, feedData)
-    .then(res => {
-      console.log(`create feed result`, res)
-      // dispatch({ type: FETCH + FEED + SUCCESS, data: res.body.feeds})
-    })
-    .catch(err => {
-      console.log(`create feed error`, err)
-    })
+  return(
+    api.feeds.create(token, feedData)
+      .then(res => {
+        console.log(`create feed result`, res)
+        return res.body.feed
+      })
+      .catch(err => {
+        console.log(`create feed error`, err)
+      })
+  )
 };
 
 export const fetchFeed = feedId => (dispatch, getState, api) => {

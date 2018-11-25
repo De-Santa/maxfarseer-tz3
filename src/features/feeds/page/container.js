@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchFeeds } from "../../../store/feeds"
+import { fetchFeeds, addFeedLocally } from "../../../store/feeds"
 import { createFeed } from "../../../store/feed"
 import Page from './page';
 
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
-    { fetchFeeds, createFeed },
+    { fetchFeeds, createFeed, addFeedLocally },
     dispatch);
   return { ...actions };
 }

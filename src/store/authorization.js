@@ -1,4 +1,5 @@
 import { INIT, START, SUCCESS, ERROR, REMOVE  } from '../constants/common'
+import { parseJwt } from '../utils/parseJwt'
 
 const AUTHORIZATION = 'AUTHORIZATION'
 const GOOGLE_API = 'GOOGLE_API'
@@ -57,21 +58,31 @@ export const initGoogleApi = () => dispatch => {
   _loadApi()
 };
 
-export const signIn = () => (dispatch, getState) => {
+export const signIn = () => (dispatch, getState, api) => {
   const { authorization: { gApiInstance } } = getState()
   gApiInstance.signIn()
     .then(googleUser => {
-      const profile = googleUser.getBasicProfile()
-      const token = googleUser.getAuthResponse().id_token
-      const userInfo = {
-        avatar: profile.getImageUrl(),
-        email: profile.getEmail(),
-        familyName: profile.getFamilyName(),
-        firstName: profile.getGivenName(),
-        fullName: profile.getName(),
-        id: profile.getId(),
-      }
-      dispatch({ type: AUTHORIZATION + SUCCESS, data: { token, userInfo }})
+      const googleToken = googleUser.getAuthResponse().id_token
+
+      api.authorization.googleSignIn(googleToken)
+        .then(res => {
+          const profile = googleUser.getBasicProfile()
+          const token = res.body.token
+          const userInfo = {
+            avatar: profile.getImageUrl(),
+            email: profile.getEmail(),
+            familyName: profile.getFamilyName(),
+            firstName: profile.getGivenName(),
+            fullName: profile.getName(),
+            id: parseJwt(token).id,
+          }
+
+          dispatch({ type: AUTHORIZATION + SUCCESS, data: { token, userInfo }})
+        })
+        .catch(err => {
+          console.log('backend auth error', err)
+          console.log('backend auth error', err.message)
+        })
     })
 };
 

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
 import { Layout } from "./ui/Templates/Layout"
-import { NewsPage } from './features/news'
+import { FeedsPage } from './features/feeds'
 import './styles/initial.scss'
 
 ReactDOM.render(
@@ -12,7 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route exact path="/" component={NewsPage} />
+          <Route exact path="/" component={FeedsPage} />
         </Switch>
       </Layout>
     </BrowserRouter>

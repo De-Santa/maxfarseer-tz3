@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { signIn, signOut } from 'store/authorization';
+import {fetchFeeds} from "../../../store/feeds";
 import Page from './page';
 
 function mapStateToProps(state) {
-  return { ...state.authorization };
+  return { ...state.feeds };
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
-    { signIn, signOut },
+    { fetchFeeds },
     dispatch);
   return { ...actions };
 }
 
-export const NewsPage = connect(mapStateToProps, mapDispatchToProps)(Page);
+export const FeedsPage = connect(mapStateToProps, mapDispatchToProps)(Page);

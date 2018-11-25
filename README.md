@@ -60,4 +60,4 @@ $ npm run build
 
 ### Методологии, используемые в приложении
   - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
-  - [BEM CSS classes naming](https://en.bem.info/methodology/)
+  - [BEM CSS class naming](https://en.bem.info/methodology/)

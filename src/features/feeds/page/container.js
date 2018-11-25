@@ -5,8 +5,8 @@ import { createFeed } from "../../../store/feed"
 import Page from './page';
 
 function mapStateToProps(state) {
-  const { authorized } = state.authorization;
-  return { ...state.feeds, authorized };
+  const { authorized, userInfo } = state.authorization;
+  return { ...state.feeds, authorized, userInfo };
 }
 
 function mapDispatchToProps(dispatch) {

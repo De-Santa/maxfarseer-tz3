@@ -1,0 +1,30 @@
+.user-panel {
+  position: relative;
+  padding: 40px 10px 20px;
+  background-color: #222222;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 202px;
+    height: 15px;
+    background: url('/img/bubble-dark.png');
+    background-repeat: no-repeat;
+    background-size: 202px 15px;
+  }
+
+  &__greeting {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  &__add-btn {
+
+  }
+}

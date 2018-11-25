@@ -4,7 +4,7 @@
   justify-content: center;
   width: 100%;
   padding: 10px;
-  background: #ffffff;
+  background-color: #ffffff;
   &::before {
     content: '';
     position: absolute;
@@ -25,7 +25,11 @@
     font-size: 40px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #3d70b2;
+    color: #4e4e4e;
+    span {
+      color: #3d70b2;
+    }
+
   }
 
   &__auth {
@@ -48,5 +52,6 @@
   &__user-name {
     margin-right: 20px;
     font-weight: 500;
+    color: #222222;
   }
 }

@@ -1,4 +1,4 @@
-import { ADD, FETCH, START, SUCCESS, ERROR, LOCALLY, FEEDS, FEED  } from '../constants/common'
+import { FETCH, START, SUCCESS, ERROR, FEEDS  } from '../constants/common'
 import { parseDate } from '../utils/parseDate';
 
 const initialState = {
@@ -22,10 +22,6 @@ export default (feeds = initialState, { type, data }) => {
       return {
         ...feeds, loading: false, error: true
       };
-    case ADD + FEED + LOCALLY:
-      return {
-        ...feeds, payload: data
-      };
     default: return feeds
   }
 };
@@ -44,9 +40,4 @@ export const fetchFeeds = () => (dispatch, getState, api) => {
     .catch(() => {
       dispatch({ type: FETCH + FEEDS + ERROR })
     })
-};
-
-export const addFeedLocally = createdFeed  => (dispatch, getState) => {
-  const { feeds: { payload } } = getState()
-  dispatch({ type: ADD + FEED + LOCALLY, data: [createdFeed, ...payload]})
 };

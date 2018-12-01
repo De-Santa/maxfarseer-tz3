@@ -28,6 +28,13 @@ export const api = {
         .set('x-access-token', token)
         .send(data)
         .then(res => res)
-    )
+    ),
+    update: (token, feedId, data) => (
+      request
+        .put(`${apiEndpoint}/feeds/${feedId}`)
+        .set('x-access-token', token)
+        .send(data)
+        .then(res => res)
+    ),
   }
 }

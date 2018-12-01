@@ -15,7 +15,6 @@ export default class FeedsPage extends Component {
     error: T.bool.isRequired,
     authorized: T.bool.isRequired,
     fetchFeeds: T.func.isRequired,
-    createFeed: T.func.isRequired,
     history: T.object.isRequired,
     userInfo: T.object,
     feeds: T.array

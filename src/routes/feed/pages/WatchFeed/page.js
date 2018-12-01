@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import bemHelper from 'utils/bem-helper'
-import T from 'prop-types'
+// import T from 'prop-types'
 import './styles.scss'
 
 const cn = bemHelper('watch-feed-page')

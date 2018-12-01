@@ -1,0 +1,109 @@
+.input-text {
+  padding-top: 15px;
+  position: relative;
+  font-size: 15px;
+  &--textarea {
+    .input-text__input {
+      resize: vertical;
+    }
+    .input-text__label {
+      top: 10%;
+    }
+  }
+  &--filled, &--focused {
+    .input-text__label {
+      top: 0;
+      transform: scale(0.9) translateY(-100%);
+    }
+  }
+
+  &--focused {
+    .input-text__underline::after {
+      transform: scaleX(1);
+      visibility: visible;
+    }
+  }
+
+  &--filled&--theme, &--focused&--theme {
+    &_blue {
+      .input-text__label {
+        color: #3d70b2;
+      }
+    }
+    &_white {
+      .input-text__label {
+        color: #ffffff;
+      }
+    }
+  }
+  &--has-error {
+    .input-text__label {
+      color: red!important;
+    }
+  }
+
+  &__input-wrap {
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+    font-size: inherit;
+    color: #222222;
+    border: none;
+    outline: none;
+    &::placeholder {
+      color: #4e4e4e;
+      transition: opacity .3s linear;
+    }
+    &:not(:focus)::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    font-size: inherit;
+    font-weight: 500;
+    transform-origin: 0 -150%;
+    transform: translateY(-50%);
+    color: #4e4e4e;
+    transition: top .3s, transform .3s, color .3s linear;
+    pointer-events: none;
+  }
+
+  &__underline {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border: none;
+    background-color: #4e4e4e;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #3d70b2;
+      transition: transform .3s ease-out;
+      transform: scaleX(0);
+    }
+  }
+
+  &__error{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: red;
+  }
+}

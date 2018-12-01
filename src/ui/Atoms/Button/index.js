@@ -1,15 +1,15 @@
-import React from 'react';
-import T from 'prop-types';
-import { Link } from 'react-router-dom';
-import bemHelper from 'utils/bem-helper';
-import './styles.scss';
+import React from 'react'
+import T from 'prop-types'
+import { Link } from 'react-router-dom'
+import bemHelper from 'utils/bem-helper'
+import './styles.scss'
 
-const cn = bemHelper('button');
+const cn = bemHelper('button')
 
 export const Button = ({
-  mix, type, children, external, to, disabled, onClick, ...props
+  mix, theme, type, children, external, to, disabled, onClick, ...props
 }) => {
-  const className = cn('', { disabled }, mix);
+  const className = cn('', { disabled, theme }, mix);
 
   const _handleClick = (e) => {
     disabled
@@ -52,14 +52,16 @@ export const Button = ({
 
 Button.propTypes = {
   mix: T.string,
+  theme: T.string,
   children: T.node.isRequired,
   type: T.string,
   to: T.string,
   external: T.bool,
   disabled: T.bool,
   onClick: T.func
-};
+}
 
 Button.defaultProps = {
-  type: 'button'
-};
+  type: 'button',
+  theme: 'dark'
+}

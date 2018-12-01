@@ -6,10 +6,8 @@
   border-width: 2px;
   border-style: solid;
   border-color: transparent;
-  outline: 2px solid #30588c;
   background-color: transparent;
   text-decoration: none;
-  color: #3d70b2;
   cursor: pointer;
   font-size: 15px;
   line-height: 1;
@@ -18,13 +16,32 @@
   user-select: none;
   -webkit-font-smoothing: antialiased;
 
-  &:focus, &:hover {
-    color: white;
-    background-color: #30588c;
-    border: 2px solid #ffffff;
-  }
+
   &--disabled, &:disabled {
     background-color: lightgray;
     cursor: not-allowed;
+    &:focus, &:hover {
+      color: #3d70b2;
+      background-color: lightgray;
+      border: 2px solid transparent;
+    }
+  }
+  &--theme_dark {
+    outline: 2px solid #30588c;
+    color: #3d70b2;
+    &:focus, &:hover {
+      color: white;
+      background-color: #30588c;
+      border: 2px solid #ffffff;
+    }
+  }
+  &--theme_light {
+    outline: 2px solid #ffffff;
+    color: #ffffff;
+    &:focus, &:hover {
+      color: #30588c;
+      background-color: #ffffff;
+      border: 2px solid #3d70b2;
+    }
   }
 }

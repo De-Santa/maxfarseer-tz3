@@ -1,7 +1,7 @@
 .user-panel {
   position: relative;
   padding: 40px 10px 20px;
-  background-color: #222222;
+  background-color: #2f588c;
   &::before {
     content: '';
     position: absolute;
@@ -11,7 +11,7 @@
     margin: auto;
     width: 202px;
     height: 15px;
-    background: url('/img/bubble-dark.png');
+    background: url('/img/bubble-blue.png');
     background-repeat: no-repeat;
     background-size: 202px 15px;
   }

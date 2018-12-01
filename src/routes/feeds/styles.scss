@@ -1,0 +1,17 @@
+.feeds-page {
+
+  &__new-feed-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+  }
+
+  &__feeds-container {
+    padding: 0 10px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px 20px;
+  }
+}

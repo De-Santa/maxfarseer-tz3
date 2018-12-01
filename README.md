@@ -20,12 +20,12 @@
 ### Чек-лист решения
 
 - [x] Авторизация через Google Sign In
-- [ ] Отображение списка новостей
+- [x] Отображение списка новостей
 - [ ] Отображение новости в режиме чтения
-- [ ] Отображение новости в режиме редактирования
+- [x] Отображение новости в режиме редактирования
 - [ ] Удаление новости
 - [ ] Показ иконок "удалить/редактировать" только для автора
-- [ ] Роутинг и редиректы после действий
+- [x] Роутинг и редиректы после действий
 
 #### Бонус
 
@@ -57,6 +57,7 @@ $ npm run build
   - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
   - [React-Router](https://github.com/ReactTraining/react-router)
   - [Superagent](https://github.com/visionmedia/superagent)
+  - [React Toastify](https://github.com/fkhadra/react-toastify)
 
 ### Методологии, используемые в приложении
   - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)

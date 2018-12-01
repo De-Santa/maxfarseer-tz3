@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 import bemHelper from 'utils/bem-helper';
-import './styles.less';
+import './styles.scss';
 
 const cn = bemHelper('input-text');
 

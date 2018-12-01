@@ -3,6 +3,7 @@ import T from 'prop-types'
 import update from 'immutability-helper'
 import bemHelper from 'utils/bem-helper'
 import { Redirect } from 'react-router'
+import { toast } from 'react-toastify'
 import { required } from '../../../../utils/validateHelpers'
 import InputText from '../../../../ui/Atoms/InputText'
 import { Button } from '../../../../ui/Atoms/Button'
@@ -26,6 +27,7 @@ export default class EditFeedPage extends Component {
     feedId: T.string.isRequired,
     createFeed: T.func.isRequired,
     updateFeed: T.func.isRequired,
+    history: T.object.isRequired,
     feed: T.object
   }
 
@@ -98,16 +100,24 @@ export default class EditFeedPage extends Component {
 
   onSubmit = isNew => e => {
     e.preventDefault();
-    const { createFeed, updateFeed, feedId } = this.props
+    const { createFeed, updateFeed, feedId, history } = this.props
     const { fields } = this.state
     const formValid = this._validate()
 
     if (formValid) {
       isNew
-        ? createFeed({...fields}).then(res => {
-          alert('create ok')
-        })
-        : updateFeed(feedId, {...fields}).then(res => alert('update ok'))
+        ? createFeed({...fields})
+          .then(() => {
+            toast.success('Новость успешно добавлена!')
+            history.push('/')
+          })
+          .catch(error => toast.error(`Ошибка при добавлении новости: ${error.message}`))
+        : updateFeed(feedId, {...fields})
+          .then(() => {
+            toast.success('Новость успешно отредактирована!')
+            history.push('/')
+          })
+          .catch(error => toast.error(`Ошибка при редактировании новости: ${error.message}`))
     }
   };
 

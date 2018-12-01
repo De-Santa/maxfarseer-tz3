@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
-import { Button } from "../../Atoms/Button";
+import { Link } from 'react-router-dom'
+import { Button } from '../../Atoms/Button'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
@@ -14,7 +15,8 @@ export default class Header extends Component {
     gApiError: T.bool.isRequired,
     signIn: T.func.isRequired,
     signOut: T.func.isRequired,
-    userInfo: T.object,
+    pathname: T.string.isRequired,
+    userInfo: T.object
   }
 
   static defaultProps = {
@@ -22,10 +24,13 @@ export default class Header extends Component {
   }
 
   render() {
-    const { mix, authorized, gApiLoading, gApiLoaded, gApiError, signIn, signOut, userInfo } = this.props
+    const {
+      mix, authorized, gApiLoading, gApiLoaded, gApiError, signIn, signOut, userInfo, pathname
+    } = this.props
 
     return (
       <header {...cn('', '', mix)}>
+        { pathname !== '/' && <Link to="/">На главную</Link>}
         <div {...cn('logo')}>Farseer <span>News</span></div>
         <div {...cn('auth')}>
           {authorized && (

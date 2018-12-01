@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { signIn, signOut } from 'store/authorization';
-import Component from './component';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { signIn, signOut } from 'store/authorization'
+import Component from './component'
 
 function mapStateToProps(state) {
   const {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
     gApiLoaded,
     gApiError,
     userInfo
-  } = state.authorization;
+  } = state.authorization
 
   return {
     authorized,
@@ -24,8 +24,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
     { signIn, signOut },
-    dispatch);
-  return { ...actions };
+    dispatch)
+  return { ...actions }
 }
 
-export const Header = connect(mapStateToProps, mapDispatchToProps)(Component);
+export const Header = connect(mapStateToProps, mapDispatchToProps)(Component)

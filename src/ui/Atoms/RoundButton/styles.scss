@@ -1,0 +1,20 @@
+.round-button {
+  height: 80px;
+  width: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #30588c;
+  background: #ffffff;
+  color: #3d70b2;
+  transition: box-shadow .3s linear;
+  box-shadow: 0 0 0 0 #3d70b2, 0 0 0 0 #ffffff, 0 0 0 0 #3d70b2, 0 0 0 0 #ffffff;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bold;
+  &:hover {
+    border-color: #3d70b2;
+    box-shadow: 0 0 0 7px #3d70b2, 0 0 0 10px #ffffff, 0 0 0 17px #3d70b2, 0 0 0 20px #ffffff;
+  }
+}

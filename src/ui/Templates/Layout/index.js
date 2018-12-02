@@ -26,7 +26,7 @@ const Layout = ({ children, location: { pathname } }) => (
       </span>
     </footer>
     <ToastContainer
-      position="bottom-center"
+      position="top-left"
       transition={Flip}
     />
   </main>

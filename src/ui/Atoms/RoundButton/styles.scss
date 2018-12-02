@@ -11,15 +11,4 @@
   transition: box-shadow .6s;
   cursor: pointer;
   font-weight: bold;
-  svg {
-    transition: fill .8s linear;
-  }
-  &:hover {
-    background-color: transparent;
-    svg {
-      fill: #ffffff!important;
-    }
-    color: #ffffff;
-    box-shadow: 0 0 0 50px #30588c inset;
-  }
 }

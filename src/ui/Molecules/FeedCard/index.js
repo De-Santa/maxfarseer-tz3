@@ -1,6 +1,7 @@
 import React from 'react'
 import T from 'prop-types'
 import { Link } from 'react-router-dom'
+import { SvgSprite } from '../../Atoms/SvgSprite';
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
@@ -12,6 +13,7 @@ const _propTypes = {
   content: T.string.isRequired,
   creator: T.object.isRequired,
   createDate: T.string.isRequired,
+  onCardClick: T.func.isRequired,
   title: T.string.isRequired,
   authorized: T.bool.isRequired,
   userInfo: T.object
@@ -23,17 +25,17 @@ const _defaultProps = {
 }
 
 export const FeedCard = ({
-  mix, _id, content, creator, title, createDate, authorized, userInfo
+  mix, _id, content, creator, title, createDate, authorized, userInfo, onCardClick
 }) => {
   const userIsCreator = authorized && creator._id === userInfo.id
 
   return (
-    <div {...cn(null, null, mix)}>
+    <div {...cn(null, null, mix)} onClick={onCardClick}>
       <div {...cn('top')}>
         {userIsCreator && (
           <div {...cn('controls')}>
             Вы автор!
-            <Link to={`/edit/${_id}`}>Редактировать</Link>
+            <Link to={`/edit/${_id}`}><SvgSprite mix={cn('controls-icon').className}/></Link>
           </div>
         )}
         <div {...cn('info')}>

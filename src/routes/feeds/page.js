@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import bemHelper from 'utils/bem-helper'
 import { RoundButton } from '../../ui/Atoms/RoundButton'
+import { SvgSprite } from '../../ui/Atoms/SvgSprite'
 import { FeedCard } from '../../ui/Molecules/FeedCard'
 import { UserPanel } from '../../ui/Molecules/UserPanel'
 import T from 'prop-types'
@@ -21,8 +22,8 @@ export default class FeedsPage extends Component {
   }
 
   static defaultProps = {
-    payload: [],
-    userInfo: {}
+    feeds: [],
+    userInfo: null
   }
 
   componentDidMount() {
@@ -44,7 +45,7 @@ export default class FeedsPage extends Component {
               onClick={() => history.push('/edit/new')}
               title="Добавить новость"
             >
-              +
+              <SvgSprite mix={cn('new-feed-icon').className} use="large-plus" />
             </RoundButton>
           </Fragment>
         )}

@@ -29,9 +29,11 @@ export default class Header extends Component {
       mix, authorized, gApiLoading, gApiLoaded, gApiError, signIn, signOut, userInfo, pathname
     } = this.props
 
+    const atInnerRoute = pathname !== '/'
+
     return (
-      <header {...cn('', '', mix)}>
-        { pathname !== '/' && (
+      <header {...cn('', {theme_dark: atInnerRoute}, mix)}>
+        { atInnerRoute && (
           <Link {...cn('back-home')} to="/">
             <SvgSprite use="back" mix={cn('back-home-icon').className} />
             <span>На главную</span>
@@ -48,6 +50,7 @@ export default class Header extends Component {
           <Button
             onClick={authorized ? signOut : signIn}
             disabled={!gApiLoaded}
+            theme={atInnerRoute ? 'light' : 'dark'}
           >
             {gApiLoading && 'Инициализация Google API'}
             {gApiError && 'Google API недоступен =('}

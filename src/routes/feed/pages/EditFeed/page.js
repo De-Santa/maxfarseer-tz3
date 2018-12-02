@@ -164,14 +164,12 @@ export default class EditFeedPage extends Component {
                   : (
                     <Button
                       type="submit"
-                      theme="light"
                     >
                       {isNew ? 'Добавить' : 'Сохранить'}
                     </Button>
                   )
                 }
                 <Button
-                  theme="light"
                   type="link"
                   to="/"
                 >

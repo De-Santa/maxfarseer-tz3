@@ -13,7 +13,7 @@
   }
   &--filled, &--focused {
     #{$this}__label {
-      color: #ffffff;
+      color: #2f588c;
       top: 0;
       transform: scale(0.9) translate(-10%, -100%);
     }
@@ -23,12 +23,6 @@
     #{$this}__underline::after {
       transform: scaleX(1);
       visibility: visible;
-    }
-  }
-
-  &--filled {
-    #{$this}__label {
-
     }
   }
 
@@ -81,7 +75,7 @@
     width: 100%;
     height: 2px;
     border: none;
-    background-color: #4e4e4e;
+    background-color: #d0cfcf;
     &::after {
       content: '';
       position: absolute;
@@ -89,7 +83,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: #ffffff;
+      background-color: #2f588c;
       transition: transform .3s ease-out;
       transform: scaleX(0);
     }

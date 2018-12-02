@@ -1,4 +1,5 @@
 .header {
+  $this: &;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +19,31 @@
     background-repeat: no-repeat;
     background-size: 202px 15px;
   }
+  &--theme_dark {
+    background-color: #3d70b2;
+    &::before {
+      background: url('/img/bubble-blue.png');
+      background-repeat: no-repeat;
+      background-size: 202px 15px;
+    }
+    #{$this}__back-home {
+      &-icon {
+        fill: #ffffff;
+      }
+      span {
+        color: #ffffff;
+      }
+    }
+    #{$this}__logo {
+      color: #4e4e4e;
+      span {
+        color: #ffffff;
+      }
+    }
+    #{$this}__user-name {
+      color: #ffffff;
+    }
+  }
 
   &__back-home {
     position: absolute;
@@ -29,12 +55,12 @@
 
     &-icon {
       margin-right: 10px;
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       fill: #2f588c;
     }
     span {
-      font-size: 18px;
+      font-size: 16px;
       color: #222222;
       font-weight: 500;
     }
@@ -51,7 +77,6 @@
     span {
       color: #3d70b2;
     }
-
   }
 
   &__auth {

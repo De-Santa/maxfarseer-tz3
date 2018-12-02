@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Button } from '../../Atoms/Button'
+import { SvgSprite } from '../../Atoms/SvgSprite'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
@@ -30,7 +31,12 @@ export default class Header extends Component {
 
     return (
       <header {...cn('', '', mix)}>
-        { pathname !== '/' && <Link to="/">На главную</Link>}
+        { pathname !== '/' && (
+          <Link {...cn('back-home')} to="/">
+            <SvgSprite use="back" mix={cn('back-home-icon').className} />
+            <span>На главную</span>
+          </Link>
+        )}
         <div {...cn('logo')}>Farseer <span>News</span></div>
         <div {...cn('auth')}>
           {authorized && (

@@ -19,6 +19,27 @@
     background-size: 202px 15px;
   }
 
+  &__back-home {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+      fill: #2f588c;
+    }
+    span {
+      font-size: 18px;
+      color: #222222;
+      font-weight: 500;
+    }
+  }
+
   &__logo {
     text-align: center;
     flex: 1 1 auto;

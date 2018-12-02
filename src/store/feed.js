@@ -11,7 +11,7 @@ export default (feed = initialState, { type, data }) => {
   switch (type) {
     case FETCH + FEED + START:
       return {
-        ...feed, loading: true
+        ...feed, loading: true, loaded: false, error: false
       };
     case FETCH + FEED + SUCCESS:
       return {
@@ -54,5 +54,8 @@ export const fetchFeed = feedId => (dispatch, getState, api) => {
   api.feeds.getById(feedId)
     .then(res => {
       dispatch({ type: FETCH + FEED + SUCCESS, data: res.body.feed})
+    })
+    .catch(() => {
+      dispatch({ type: FETCH + FEED + ERROR })
     })
 };

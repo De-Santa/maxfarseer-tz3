@@ -12,7 +12,7 @@ export default (feeds = initialState, { type, data }) => {
   switch (type) {
     case FETCH + FEEDS + START:
       return {
-        ...feeds, loading: true
+        ...feeds, loading: true, loaded: false, error: false
       };
     case FETCH + FEEDS + SUCCESS:
       return {

@@ -21,4 +21,19 @@
     grid-template-rows: auto auto;
     grid-gap: 20px 20px;
   }
+
+  &__remove-modal-title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #222222;
+  }
+
+  &__remove-modal-buttons {
+    text-align: center;
+    button:nth-child(1) {
+      margin-right: 20px;
+    }
+  }
 }

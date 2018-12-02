@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchFeeds } from '../../store/feeds'
+import { removeFeed } from '../../store/feed'
 import Page from './page'
 
 function mapStateToProps(state) {
@@ -10,7 +11,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = bindActionCreators({ fetchFeeds }, dispatch);
+  const actions = bindActionCreators({ fetchFeeds, removeFeed }, dispatch);
   return { ...actions };
 }
 

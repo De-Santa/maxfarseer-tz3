@@ -36,5 +36,11 @@ export const api = {
         .send(data)
         .then(res => res)
     ),
+    remove: (token, feedId) => (
+      request
+        .delete(`${apiEndpoint}/feeds/${feedId}`)
+        .set('x-access-token', token)
+        .then(res => res)
+    )
   }
 }

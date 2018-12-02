@@ -45,7 +45,7 @@ export default class FeedsPage extends Component {
               onClick={() => history.push('/edit/new')}
               title="Добавить новость"
             >
-              <SvgSprite mix={cn('new-feed-icon').className} use="large-plus" />
+              <SvgSprite mix={cn('new-feed-icon').className} use="add-new" />
             </RoundButton>
           </Fragment>
         )}

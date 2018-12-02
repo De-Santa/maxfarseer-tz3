@@ -1,4 +1,4 @@
-$header-height: 95px;
+$header-height: 90px;
 
 .layout {
   min-height: 100vh;
@@ -13,10 +13,13 @@ $header-height: 95px;
   }
 
   &__content {
+    display: flex;
     flex: 1 1 auto;
     padding: $header-height 0 20px;
     margin: 0 10px;
-    background-color: #3d70b2;
+    & > * {
+      flex: 1 1 auto;
+    }
   }
 
   &__footer {

@@ -6,7 +6,6 @@ import { Button } from '../../ui/Atoms/Button'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
 import { FeedCard } from '../../ui/Molecules/FeedCard'
 import { Modal } from '../../ui/Molecules/Modal'
-import { UserPanel } from '../../ui/Molecules/UserPanel'
 import T from 'prop-types'
 import './styles.scss'
 
@@ -77,27 +76,6 @@ export default class FeedsPage extends Component {
     } = this.props
     return (
       <div {...cn()}>
-        {authorized && (
-          <Fragment>
-            <UserPanel userInfo={userInfo} />
-            <RoundButton
-              mix={cn('new-feed-btn').className}
-              onClick={() => history.push('/edit/new')}
-              title="Добавить новость"
-            >
-              <SvgSprite mix={cn('new-feed-icon').className} use="add-new" />
-            </RoundButton>
-            {removeModalActive && (
-              <Modal onClose={this.closeRemoveModal}>
-                <p {...cn('remove-modal-title')}>Подтверите удаление новости</p>
-                <div {...cn('remove-modal-buttons')}>
-                  <Button onClick={this.handleFeedRemove}>Подтверждаю</Button>
-                  <Button onClick={this.closeRemoveModal}>Отмена</Button>
-                </div>
-              </Modal>
-            )}
-          </Fragment>
-        )}
         {loading && 'Загрузка новостей'}
         {error && 'Ошибка при загрузке новостей'}
         {loaded && (
@@ -120,6 +98,27 @@ export default class FeedsPage extends Component {
             )
           )
         }
+
+        {authorized && (
+          <Fragment>
+            <RoundButton
+              mix={cn('new-feed-btn').className}
+              onClick={() => history.push('/edit/new')}
+              title="Добавить новость"
+            >
+              <SvgSprite mix={cn('new-feed-icon').className} use="add-new" />
+            </RoundButton>
+            {removeModalActive && (
+              <Modal onClose={this.closeRemoveModal}>
+                <p {...cn('remove-modal-title')}>Подтверите удаление новости</p>
+                <div {...cn('remove-modal-buttons')}>
+                  <Button onClick={this.handleFeedRemove}>Подтверждаю</Button>
+                  <Button onClick={this.closeRemoveModal}>Отмена</Button>
+                </div>
+              </Modal>
+            )}
+          </Fragment>
+        )}
       </div>
     )
   }

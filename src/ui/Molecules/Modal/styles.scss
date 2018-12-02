@@ -1,0 +1,46 @@
+.modal {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(223, 227, 230, 0.5);
+
+  &__window {
+    overflow: auto;
+    position: relative;
+    padding: 60px 30px;
+    max-width: 800px;
+    max-height: 90%;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: #2f588c;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    fill: #4e4e4e;
+    &:hover {
+      fill: #2f588c;
+    }
+  }
+}

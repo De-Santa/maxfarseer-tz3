@@ -68,7 +68,7 @@ export const FeedCard = ({
         </div>
       )}
       <p {...cn('content')}>{trimmedContent}</p>
-      <p {...cn('author')}>
+      <div {...cn('author')}>
         <span>{creator.displayName}</span>
         {userIsCreator && (
           <SvgSprite
@@ -77,7 +77,7 @@ export const FeedCard = ({
             title="Вы автор данной новости"
           />
         )}
-      </p>
+      </div>
     </div>
   )
 }

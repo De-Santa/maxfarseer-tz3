@@ -1,6 +1,9 @@
 $header-height: 95px;
 
 .layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   &__header {
     z-index: 2;
     position: fixed;
@@ -10,9 +13,36 @@ $header-height: 95px;
   }
 
   &__content {
-    min-height: 100vh;
+    flex: 1 1 auto;
     padding: $header-height 0 20px;
     margin: 0 10px;
     background-color: #3d70b2;
+  }
+
+  &__footer {
+    padding: 20px 10px;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-left {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    &-right {
+      a {
+        display: inline-flex;
+        align-items: center;
+        span {
+          font-size: 14px;
+          color: #222222;
+        }
+      }
+    }
+    &-icon {
+      margin-left: 8px;
+      width: 26px;
+      height: 26px;
+    }
   }
 }

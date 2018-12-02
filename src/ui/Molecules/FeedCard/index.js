@@ -68,7 +68,16 @@ export const FeedCard = ({
         </div>
       )}
       <p {...cn('content')}>{trimmedContent}</p>
-      <p {...cn('author')}>{creator.displayName}</p>
+      <p {...cn('author')}>
+        <span>{creator.displayName}</span>
+        {userIsCreator && (
+          <SvgSprite
+            mix={cn('author-icon').className}
+            use="user"
+            title="Вы автор данной новости"
+          />
+        )}
+      </p>
     </div>
   )
 }

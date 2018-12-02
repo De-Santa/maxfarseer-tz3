@@ -1,4 +1,5 @@
 .feed-card {
+  $this: &;
   padding-top: 10px;
   display: grid;
   grid-template-areas:
@@ -8,10 +9,10 @@
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto 1fr;
   align-content: start;
-  grid-row-gap: 15px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  grid-row-gap: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #ffffff;
 
   &__info, &__content, &__author {
     padding-left: 24px;
@@ -38,15 +39,25 @@
   }
 
   &__author {
+    height: 70px;
     grid-area: aut;
     align-self: end;
-    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-top: 16px;
     padding-bottom: 16px;
-    background-color: #4e4e4e;
-    font-weight: 500;
-    font-size: 16px;
-    color: #ffffff;
+    background-color: #2f588c;
+    span {
+      font-weight: 500;
+      font-size: 16px;
+      color: #ffffff;
+    }
+    &-icon {
+      width: 35px;
+      height: 35px;
+      fill: #ffffff;
+    }
   }
 
   &__edit-icon, &__delete-icon {
@@ -66,9 +77,9 @@
 
   &__title {
     margin-bottom: 8px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.87);
+    color: #222222;
     cursor: pointer;
     &:hover {
       text-decoration: underline;

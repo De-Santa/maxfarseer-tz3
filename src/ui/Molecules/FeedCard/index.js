@@ -15,6 +15,7 @@ const _propTypes = {
   creator: T.object.isRequired,
   createDate: T.string.isRequired,
   onCardClick: T.func.isRequired,
+  onRemoveClick: T.func.isRequired,
   title: T.string.isRequired,
   authorized: T.bool.isRequired,
   userInfo: T.object
@@ -26,15 +27,21 @@ const _defaultProps = {
 }
 
 export const FeedCard = ({
-  mix, _id, content, creator, title, createDate, authorized, userInfo, onCardClick
+  mix, _id, content, creator, title, createDate, authorized, userInfo, onCardClick, onRemoveClick
 }) => {
   const userIsCreator = authorized && creator._id === userInfo.id
-  const trimmedContent = content.length > 100 ? trimString(content) : content
+  const trimmedContent = content.length > 200 ? trimString(content) : content
 
   return (
-    <div {...cn(null, null, mix)} onClick={onCardClick}>
+    <div {...cn(null, null, mix)}>
       <div {...cn('info')}>
-        <h2 {...cn('title')}>{title}</h2>
+        <h2
+          {...cn('title')}
+          onClick={onCardClick}
+          title="Перейти к новости"
+        >
+          {title}
+        </h2>
         <p {...cn('date')}>{createDate}</p>
       </div>
       {userIsCreator && (
@@ -53,6 +60,10 @@ export const FeedCard = ({
             use="delete"
             mix={cn('delete-icon').className}
             title="Удалить новость"
+            onClick={e => {
+              e.stopPropagation()
+              onRemoveClick(_id)
+            }}
           />
         </div>
       )}

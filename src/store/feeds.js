@@ -1,5 +1,6 @@
 import { FETCH, START, SUCCESS, ERROR, FEEDS  } from '../constants/common'
 import { parseDate } from '../utils/parseDate';
+import { trimString } from '../utils/trimString';
 
 const initialState = {
   loading: false,
@@ -32,7 +33,13 @@ export const fetchFeeds = () => (dispatch, getState, api) => {
     .then(res => {
       const normalisedFeeds = res.body.feeds.length > 0
         ? res.body
-          .feeds.map(feed => ({...feed, createDate: parseDate(feed.createDate) }))
+          .feeds.map(feed => ({
+            ...feed,
+            createDate: parseDate(feed.createDate),
+            content: feed.content.length > 200
+              ? trimString(feed.content)
+              : feed.content
+          }))
           .reverse()
         : res.body.feeds
       dispatch({ type: FETCH + FEEDS + SUCCESS, data: normalisedFeeds})

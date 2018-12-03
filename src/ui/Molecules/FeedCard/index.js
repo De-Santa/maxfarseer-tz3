@@ -2,7 +2,6 @@ import React from 'react'
 import T from 'prop-types'
 import { Link } from 'react-router-dom'
 import { SvgSprite } from '../../Atoms/SvgSprite'
-import { trimString } from '../../../utils/trimString'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
@@ -30,7 +29,6 @@ export const FeedCard = ({
   mix, _id, content, creator, title, createDate, authorized, userInfo, onCardClick, onRemoveClick
 }) => {
   const userIsCreator = authorized && creator._id === userInfo.id
-  const trimmedContent = content.length > 200 ? trimString(content) : content
 
   return (
     <div {...cn(null, null, mix)}>
@@ -67,7 +65,7 @@ export const FeedCard = ({
           />
         </div>
       )}
-      <p {...cn('content')}>{trimmedContent}</p>
+      <p {...cn('content')}>{content}</p>
       <div {...cn('author')}>
         <span>{creator.displayName}</span>
         {userIsCreator && (

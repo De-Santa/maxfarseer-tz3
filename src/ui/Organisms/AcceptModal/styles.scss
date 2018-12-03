@@ -1,0 +1,12 @@
+.accept-modal {
+  text-align: center;
+  &__warn-text {
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #222222;
+  }
+  &__accept-button {
+    margin-right: 20px;
+  }
+}

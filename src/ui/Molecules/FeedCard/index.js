@@ -60,7 +60,7 @@ export const FeedCard = ({
             title="Удалить новость"
             onClick={e => {
               e.stopPropagation()
-              onRemoveClick(_id)
+              onRemoveClick()
             }}
           />
         </div>

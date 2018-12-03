@@ -1,17 +1,15 @@
 import React, { Component, Fragment } from 'react'
-import bemHelper from 'utils/bem-helper'
-import { toast } from 'react-toastify'
+import T from 'prop-types'
 import { RoundButton } from '../../ui/Atoms/RoundButton'
-import { Button } from '../../ui/Atoms/Button'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
 import { FeedCard } from '../../ui/Molecules/FeedCard'
-import { Modal } from '../../ui/Molecules/Modal'
-import T from 'prop-types'
+import { withFeedRemove } from '../../hoc/withFeedRemove';
+import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
 const cn = bemHelper('feeds-page')
 
-export default class FeedsPage extends Component {
+class FeedsPage extends Component {
   static propTypes = {
     loading: T.bool.isRequired,
     loaded: T.bool.isRequired,
@@ -21,7 +19,8 @@ export default class FeedsPage extends Component {
     removeFeed: T.func.isRequired,
     history: T.object.isRequired,
     userInfo: T.object,
-    feeds: T.array
+    feeds: T.array,
+
   }
 
   static defaultProps = {
@@ -29,50 +28,14 @@ export default class FeedsPage extends Component {
     userInfo: null
   }
 
-  state = {
-    removeModalActive: false,
-    removeFeedId: null
-  }
-
   componentDidMount() {
     const { loading, fetchFeeds } = this.props
     !loading && fetchFeeds()
   }
 
-  openRemoveModal = feedId => {
-    this.setState({
-      removeModalActive: true,
-      removeFeedId: feedId
-    })
-  }
-
-  closeRemoveModal = () => {
-    this.setState({
-      removeModalActive: false,
-      removeFeedId: null
-    })
-  }
-
-  handleFeedRemove = () => {
-    const { removeFeedId } = this.state
-    const { removeFeed, fetchFeeds } = this.props
-
-    removeFeed(removeFeedId)
-      .then(() => {
-        fetchFeeds()
-        this.closeRemoveModal()
-        toast.success('Новость успешно удалена!')
-      })
-      .catch(error => {
-        this.closeRemoveModal()
-        toast.error(`Ошибка при удалении новости: ${error.message}`)
-      })
-  }
-
   render() {
-    const { removeModalActive } = this.state
     const {
-      loading, loaded, error, feeds, authorized, userInfo, history
+      loading, loaded, error, feeds, authorized, userInfo, history, removeFeed
     } = this.props
     return (
       <div {...cn()}>
@@ -90,7 +53,7 @@ export default class FeedsPage extends Component {
                       authorized={authorized}
                       userInfo={userInfo}
                       onCardClick={() => history.push(`/watch/${feed._id}`)}
-                      onRemoveClick={this.openRemoveModal}
+                      onRemoveClick={() => removeFeed(feed._id)}
                       {...feed}
                     />
                   ))}
@@ -98,7 +61,6 @@ export default class FeedsPage extends Component {
             )
           )
         }
-
         {authorized && (
           <Fragment>
             <RoundButton
@@ -108,18 +70,11 @@ export default class FeedsPage extends Component {
             >
               <SvgSprite mix={cn('new-feed-icon').className} use="add-new" />
             </RoundButton>
-            {removeModalActive && (
-              <Modal onClose={this.closeRemoveModal}>
-                <p {...cn('remove-modal-title')}>Подтверите удаление новости</p>
-                <div {...cn('remove-modal-buttons')}>
-                  <Button onClick={this.handleFeedRemove}>Подтверждаю</Button>
-                  <Button onClick={this.closeRemoveModal}>Отмена</Button>
-                </div>
-              </Modal>
-            )}
           </Fragment>
         )}
       </div>
     )
   }
 }
+
+export default withFeedRemove(FeedsPage)

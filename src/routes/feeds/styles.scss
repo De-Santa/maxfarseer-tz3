@@ -1,6 +1,7 @@
 .feeds-page {
   background-color: #3d70b2;
   padding-bottom: 40px;
+
   &__new-feed-btn {
     position: fixed;
     bottom: 96px;
@@ -21,14 +22,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto;
     grid-gap: 20px 20px;
-  }
-
-  &__remove-modal-title {
-    margin-bottom: 40px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 500;
-    color: #222222;
   }
 
   &__remove-modal-buttons {

@@ -1,18 +1,21 @@
 import React, { Component, Fragment } from 'react'
-import bemHelper from 'utils/bem-helper'
 import T from 'prop-types'
-import { Button } from "../../../../ui/Atoms/Button";
+import { withFeedRemove } from '../../../../hoc/withFeedRemove'
+import { Button } from '../../../../ui/Atoms/Button'
+import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
 const cn = bemHelper('watch-feed-page')
 
-export default class WatchFeedPage extends Component {
+class WatchFeedPage extends Component {
   static propTypes = {
     loading: T.bool.isRequired,
     loaded: T.bool.isRequired,
     error: T.bool.isRequired,
     authorized: T.bool.isRequired,
     fetchFeed: T.func.isRequired,
+    removeFeed: T.func.isRequired,
+    history: T.object.isRequired,
     feedId: T.string.isRequired,
     feed: T.object,
     userInfo: T.object
@@ -29,7 +32,9 @@ export default class WatchFeedPage extends Component {
   }
 
   render() {
-    const { loading, loaded, error, feedId, feed, authorized, userInfo } = this.props
+    const {
+      loading, loaded, error, feedId, feed, authorized, userInfo, removeFeed, history
+    } = this.props
     return (
       <div {...cn()}>
         {loading && 'Загрузка новости'}
@@ -44,7 +49,13 @@ export default class WatchFeedPage extends Component {
                 >
                   Редактировать
                 </Button>
-                <Button>Удалить</Button>
+                <Button
+                  onClick={() => (
+                    removeFeed(feedId, () => history.push('/'))
+                  )}
+                >
+                  Удалить
+                </Button>
               </Fragment>
             )}
             <h1 {...cn('title')}>{feed.title}</h1>
@@ -57,3 +68,5 @@ export default class WatchFeedPage extends Component {
     )
   }
 }
+
+export default withFeedRemove(WatchFeedPage)

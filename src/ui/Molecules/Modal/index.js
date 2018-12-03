@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import T from 'prop-types';
-import { SvgSprite } from "../../Atoms/SvgSprite"
-import bemHelper from 'utils/bem-helper';
-import './styles.scss';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import T from 'prop-types'
+import { SvgSprite } from '../../Atoms/SvgSprite'
+import bemHelper from 'utils/bem-helper'
+import './styles.scss'
 
-const cn = bemHelper('modal');
-const modalRoot = document.getElementById('modal');
+const cn = bemHelper('modal')
+const modalRoot = document.getElementById('modal')
 
 export class Modal extends Component {
-  modalRef = React.createRef();
+  modalRef = React.createRef()
 
   componentDidMount() {
-    document.addEventListener('click', this._onClickOutside);
+    document.addEventListener('click', this._onClickOutside)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this._onClickOutside);
+    document.removeEventListener('click', this._onClickOutside)
   }
 
   _onClickOutside = (e) => {
-    !e.target.closest('.modal__window') && this.handleClose();
+    !e.target.closest('.modal__window') && this.handleClose()
   };
 
   handleClose = () => {
-    const { onClose } = this.props;
-    onClose();
+    const { onClose } = this.props
+    onClose()
   };
 
   render() {
-    const { children } = this.props;
+    const { children, mix } = this.props;
 
     const modal = (
-      <div {...cn()}>
+      <div {...cn(null, null, mix)}>
         <div {...cn('window')} ref={this.modalRef}>
           <SvgSprite
             mix={cn('close').className}
@@ -44,16 +44,21 @@ export class Modal extends Component {
           </div>
         </div>
       </div>
-    );
+    )
 
     return ReactDOM.createPortal(
       modal,
       modalRoot
-    );
+    )
   }
 }
 
 Modal.propTypes = {
   children: T.node.isRequired,
-  onClose: T.func.isRequired
-};
+  onClose: T.func.isRequired,
+  mix: T.string
+}
+
+Modal.defaultProps = {
+  mix: ''
+}

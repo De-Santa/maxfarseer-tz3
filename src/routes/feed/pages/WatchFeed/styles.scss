@@ -1,15 +1,30 @@
-.feeds-page {
-
-  &__user-panel {
-    // margin-bottom: 40px;
+.watch-feed-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+  & > a {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  &__title {
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: #222222;
   }
 
-  &__feeds-container {
-    padding: 0 10px;
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    grid-gap: 20px 20px;
+  &__author, &__create-date {
+    display: inline-block;
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: #4e4e4e;
+  }
+
+  &__author {
+    margin-right: 16px;
+  }
+
+  &__content {
+    font-size: 20px;
+    line-height: 27px;
   }
 }

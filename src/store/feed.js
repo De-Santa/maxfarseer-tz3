@@ -1,4 +1,5 @@
 import { FETCH, START, SUCCESS, ERROR, FEED } from '../constants/common'
+import { parseDate } from '../utils/parseDate';
 
 const initialState = {
   loading: false,
@@ -53,7 +54,10 @@ export const fetchFeed = feedId => (dispatch, getState, api) => {
   dispatch({ type: FETCH + FEED + START })
   api.feeds.getById(feedId)
     .then(res => {
-      dispatch({ type: FETCH + FEED + SUCCESS, data: res.body.feed})
+      dispatch({
+        type: FETCH + FEED + SUCCESS,
+        data: {...res.body.feed, createDate: parseDate(res.body.feed.createDate)}
+      })
     })
     .catch(() => {
       dispatch({ type: FETCH + FEED + ERROR })

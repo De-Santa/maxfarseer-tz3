@@ -4,9 +4,9 @@ import update from 'immutability-helper'
 import bemHelper from 'utils/bem-helper'
 import { Redirect } from 'react-router'
 import { toast } from 'react-toastify'
-import { required } from '../../../../utils/validateHelpers'
-import InputText from '../../../../ui/Atoms/InputText'
-import { Button } from '../../../../ui/Atoms/Button'
+import { required } from '../../utils/validateHelpers'
+import InputText from '../../ui/Atoms/InputText'
+import { Button } from '../../ui/Atoms/Button'
 import './styles.scss'
 
 const cn = bemHelper('edit-feed-page')
@@ -16,7 +16,7 @@ const validationConfig = {
   content: [required],
 };
 
-export default class EditFeedPage extends Component {
+export class EditFeedPage extends Component {
   static propTypes = {
     loading: T.bool.isRequired,
     loaded: T.bool.isRequired,

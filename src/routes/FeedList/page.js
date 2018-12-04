@@ -3,13 +3,12 @@ import T from 'prop-types'
 import { RoundButton } from '../../ui/Atoms/RoundButton'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
 import { FeedCard } from '../../ui/Molecules/FeedCard'
-import { withFeedRemove } from '../../hoc/withFeedRemove';
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
-const cn = bemHelper('feeds-page')
+const cn = bemHelper('feed-list-page')
 
-class FeedsPage extends Component {
+export class FeedListPage extends Component {
   static propTypes = {
     loading: T.bool.isRequired,
     loaded: T.bool.isRequired,
@@ -20,7 +19,6 @@ class FeedsPage extends Component {
     history: T.object.isRequired,
     userInfo: T.object,
     feeds: T.array,
-
   }
 
   static defaultProps = {
@@ -76,5 +74,3 @@ class FeedsPage extends Component {
     )
   }
 }
-
-export default withFeedRemove(FeedsPage)

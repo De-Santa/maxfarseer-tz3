@@ -5,8 +5,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { initGoogleApi } from './store/authorization'
 import Layout from './ui/Templates/Layout'
-import { FeedsPage } from './routes/feeds'
-import { EditFeedPage, WatchFeedPage } from './routes/feed'
+import { FeedListRoute, EditFeedRoute, WatchFeedRoute, LoginRoute } from './routes'
 import './styles/initial.scss'
 import 'react-toastify/dist/ReactToastify.min.css'
 
@@ -16,10 +15,11 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
+        <Route path="/login" component={LoginRoute} />
         <Layout>
-          <Route exact path="/" component={FeedsPage} />
-          <Route path="/watch/:id" component={WatchFeedPage} />
-          <Route path="/edit/:id" component={EditFeedPage} />
+          <Route exact path="/" component={FeedListRoute} />
+          <Route path="/watch/:id" component={WatchFeedRoute} />
+          <Route path="/edit/:id" component={EditFeedRoute} />
         </Layout>
       </Switch>
     </BrowserRouter>

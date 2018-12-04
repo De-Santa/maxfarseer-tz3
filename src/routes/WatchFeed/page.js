@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
-import { withFeedRemove } from '../../../../hoc/withFeedRemove'
-import { Button } from '../../../../ui/Atoms/Button'
+import { Button } from '../../ui/Atoms/Button'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
 const cn = bemHelper('watch-feed-page')
 
-class WatchFeedPage extends Component {
+export class WatchFeedPage extends Component {
   static propTypes = {
     loading: T.bool.isRequired,
     loaded: T.bool.isRequired,
@@ -68,5 +67,3 @@ class WatchFeedPage extends Component {
     )
   }
 }
-
-export default withFeedRemove(WatchFeedPage)

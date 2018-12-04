@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchFeeds } from '../../store/feeds'
-import Page from './page'
+import { withFeedRemove } from '../../hoc/withFeedRemove'
+import { FeedListPage } from './page'
 
 function mapStateToProps(state) {
   const { authorized, userInfo } = state.authorization;
@@ -14,4 +15,4 @@ function mapDispatchToProps(dispatch) {
   return { ...actions };
 }
 
-export const FeedsPage = connect(mapStateToProps, mapDispatchToProps)(Page);
+export const FeedListRoute = connect(mapStateToProps, mapDispatchToProps)(withFeedRemove(FeedListPage))

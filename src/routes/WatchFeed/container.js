@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchFeed, removeFeed } from "../../../../store/feed";
-import Page from './page';
+import { fetchFeed } from '../../store/feed';
+import { withFeedRemove } from '../../hoc/withFeedRemove'
+import { WatchFeedPage } from './page';
 
 function mapStateToProps(state, ownProps) {
   const { match: { params: { id } } } = ownProps;
@@ -14,9 +15,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
-    { fetchFeed, removeFeed },
+    { fetchFeed },
     dispatch);
   return { ...actions };
 }
 
-export const WatchFeedPage = connect(mapStateToProps, mapDispatchToProps)(Page);
+export const WatchFeedRoute = connect(mapStateToProps, mapDispatchToProps)(withFeedRemove(WatchFeedPage));

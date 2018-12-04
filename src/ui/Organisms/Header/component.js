@@ -11,10 +11,6 @@ const cn = bemHelper('header')
 export default class Header extends Component {
   static propTypes = {
     authorized: T.bool.isRequired,
-    gApiLoading: T.bool.isRequired,
-    gApiLoaded: T.bool.isRequired,
-    gApiError: T.bool.isRequired,
-    signIn: T.func.isRequired,
     signOut: T.func.isRequired,
     pathname: T.string.isRequired,
     userInfo: T.object
@@ -26,14 +22,14 @@ export default class Header extends Component {
 
   render() {
     const {
-      mix, authorized, gApiLoading, gApiLoaded, gApiError, signIn, signOut, userInfo, pathname
+      mix, authorized, signOut, userInfo, pathname
     } = this.props
 
-    const atInnerRoute = pathname !== '/'
+    const isInnerRoute = pathname !== '/'
 
     return (
-      <header {...cn('', {theme_dark: atInnerRoute}, mix)}>
-        { atInnerRoute && (
+      <header {...cn('', {theme_dark: isInnerRoute}, mix)}>
+        { isInnerRoute && (
           <Link {...cn('back-home')} to="/">
             <SvgSprite use="back" mix={cn('back-home-icon').className} />
             <span>На главную</span>
@@ -41,24 +37,28 @@ export default class Header extends Component {
         )}
         <div {...cn('logo')}>Farseer <span>News</span></div>
         <div {...cn('auth')}>
-          {authorized && (
+          {authorized ? (
             <Fragment>
               <img {...cn('user-avatar')} src={userInfo.avatar} alt={userInfo.firstName} />
               <div {...cn('user-name')}>{userInfo.firstName}</div>
+              <Button
+                onClick={signOut}
+                theme={isInnerRoute ? 'light' : 'dark'}
+              >
+                Выход
+              </Button>
             </Fragment>
-          )}
-          <Button
-            onClick={authorized ? signOut : signIn}
-            disabled={!gApiLoaded}
-            theme={atInnerRoute ? 'light' : 'dark'}
-          >
-            {gApiLoading && 'Инициализация Google API'}
-            {gApiError && 'Google API недоступен =('}
-            {gApiLoaded
-              ? authorized ? 'Выйти' : 'Войти'
-              : null
-            }
-          </Button>
+          )
+            : (
+              <Button
+                type="link"
+                to="/login"
+                theme={isInnerRoute ? 'light' : 'dark'}
+              >
+                Вход
+              </Button>
+            )
+          }
         </div>
       </header>
     )

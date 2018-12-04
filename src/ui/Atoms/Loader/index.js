@@ -5,7 +5,7 @@ import './styles.scss';
 
 const cn = bemHelper('loader');
 
-const Loader = ({ mix, size }) => (
+export const Loader = ({ mix, size }) => (
   <div {...cn('', '', mix)} style={{ width: size, height: size }}>
     <svg {...cn('spinner')} viewBox="25 25 50 50">
       <circle {...cn('path')} cx="50" cy="50" r="20" fill="none" strokeWidth="3" strokeMiterlimit="10" />
@@ -22,5 +22,3 @@ Loader.defaultProps = {
   mix: '',
   size: '30px'
 };
-
-export default Loader;

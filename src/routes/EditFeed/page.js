@@ -122,7 +122,7 @@ export class EditFeedPage extends Component {
   };
 
   render() {
-    const { authorized, isNew } = this.props
+    const { authorized, isNew, history } = this.props
     const {
       fields: {
         title,
@@ -170,8 +170,7 @@ export class EditFeedPage extends Component {
                   )
                 }
                 <Button
-                  type="link"
-                  to="/"
+                  onClick={() => history.goBack()}
                 >
                   Отмена
                 </Button>

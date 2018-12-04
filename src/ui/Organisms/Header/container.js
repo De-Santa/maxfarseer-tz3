@@ -1,29 +1,17 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { signIn, signOut } from 'store/authorization'
+import { signOut } from 'store/authorization'
 import Component from './component'
 
 function mapStateToProps(state) {
-  const {
-    authorized,
-    gApiLoading,
-    gApiLoaded,
-    gApiError,
-    userInfo
-  } = state.authorization
+  const { authorized, userInfo} = state.authorization
 
-  return {
-    authorized,
-    gApiLoading,
-    gApiLoaded,
-    gApiError,
-    userInfo
-  };
+  return { authorized, userInfo };
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators(
-    { signIn, signOut },
+    { signOut },
     dispatch)
   return { ...actions }
 }

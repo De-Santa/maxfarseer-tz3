@@ -1,5 +1,6 @@
 .button {
   padding: 8px 12px;
+  min-width: 90px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +12,7 @@
   cursor: pointer;
   font-size: 15px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   transition: background-color .3s, border .3s, color .3s linear;
   user-select: none;
   -webkit-font-smoothing: antialiased;

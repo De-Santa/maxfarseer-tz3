@@ -1,27 +1,14 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { initGoogleApi, signIn } from '../../store/authorization'
-import { LoginPage } from './page'
+import { SignUpPage } from './page'
 
 function mapStateToProps(state) {
   const {
-    authorized,
-    gApiLoading,
-    gApiLoaded,
-    gApiError
+    authorized
   } = state.authorization
 
   return {
     authorized,
-    gApiLoading,
-    gApiLoaded,
-    gApiError
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  const actions = bindActionCreators({ initGoogleApi, signIn }, dispatch);
-  return { ...actions };
-}
-
-export const LoginRoute = connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export const SignUpRoute = connect(mapStateToProps)(SignUpPage);

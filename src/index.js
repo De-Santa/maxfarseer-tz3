@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
-import { FeedListRoute, EditFeedRoute, WatchFeedRoute, LoginRoute } from './routes'
+import { FeedListRoute, EditFeedRoute, WatchFeedRoute, LoginRoute, SignUpRoute } from './routes'
 import MainLayout from './ui/Templates/MainLayout'
 
 import './styles/initial.scss'
@@ -14,6 +14,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={LoginRoute} />
+        <Route path="/sign-up" component={SignUpRoute} />
         <MainLayout>
           <Route exact path="/" component={FeedListRoute} />
           <Route path="/watch/:id" component={WatchFeedRoute} />

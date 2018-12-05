@@ -10,7 +10,6 @@ import { InputText } from '../../ui/Atoms/InputText'
 import { Card } from '../../ui/Atoms/Card'
 import { MinimalLayout } from '../../ui/Templates/MinimalLayout'
 import bemHelper from 'utils/bem-helper'
-import { toast } from 'react-toastify'
 import './styles.scss'
 
 const cn = bemHelper('login-page')
@@ -29,7 +28,6 @@ export class LoginPage extends Component {
   componentDidUpdate(prevProps) {
     const { gApiLoaded, signIn } = this.props
     if (prevProps.gApiLoaded !== gApiLoaded) {
-      toast.info('im ok bro')
       gApiLoaded && signIn()
     }
   }
@@ -62,7 +60,7 @@ export class LoginPage extends Component {
                   <Button type="submit">Вход</Button>
                   <Button type="link" to="/">Отмена</Button>
                 </form>
-                <Link {...cn('register')} to="register">Регистрация</Link>
+                <Link {...cn('register')} to="/sign-up">Регистрация</Link>
               </Card>
               <button
                 {...cn('google-sign-in')}

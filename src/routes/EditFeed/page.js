@@ -5,7 +5,7 @@ import bemHelper from 'utils/bem-helper'
 import { Redirect } from 'react-router'
 import { toast } from 'react-toastify'
 import { required } from '../../utils/validateHelpers'
-import InputText from '../../ui/Atoms/InputText'
+import { InputText } from '../../ui/Atoms/InputText'
 import { Button } from '../../ui/Atoms/Button'
 import './styles.scss'
 

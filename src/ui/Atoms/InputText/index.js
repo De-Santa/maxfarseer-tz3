@@ -5,7 +5,7 @@ import './styles.scss';
 
 const cn = bemHelper('input-text');
 
-class InputText extends Component {
+export class InputText extends Component {
   state = {
     focused: false
   };
@@ -92,5 +92,3 @@ InputText.defaultProps = {
   label: '',
   value: null
 };
-
-export default InputText;

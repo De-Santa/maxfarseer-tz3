@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Button } from '../../Atoms/Button'
+import { Logo } from '../../Atoms/Logo'
 import { SvgSprite } from '../../Atoms/SvgSprite'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
@@ -35,7 +36,7 @@ export default class Header extends Component {
             <span>На главную</span>
           </Link>
         )}
-        <div {...cn('logo')}>Farseer <span>News</span></div>
+        <Logo />
         <div {...cn('auth')}>
           {authorized ? (
             <Fragment>
@@ -45,7 +46,7 @@ export default class Header extends Component {
                 onClick={signOut}
                 theme={isInnerRoute ? 'light' : 'dark'}
               >
-                Выход
+                Выйти
               </Button>
             </Fragment>
           )
@@ -55,7 +56,7 @@ export default class Header extends Component {
                 to="/login"
                 theme={isInnerRoute ? 'light' : 'dark'}
               >
-                Вход
+                Войти
               </Button>
             )
           }

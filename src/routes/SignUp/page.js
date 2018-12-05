@@ -5,12 +5,8 @@ import { Link } from 'react-router-dom'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
 import { Loader } from '../../ui/Atoms/Loader'
 import { Button } from '../../ui/Atoms/Button'
-import { Logo } from '../../ui/Atoms/Logo'
-import { InputText } from '../../ui/Atoms/InputText'
-import { Card } from '../../ui/Atoms/Card'
-import { MinimalLayout } from '../../ui/Templates/MinimalLayout'
+import InputText from '../../ui/Atoms/InputText'
 import bemHelper from 'utils/bem-helper'
-import { toast } from 'react-toastify'
 import './styles.scss'
 
 const cn = bemHelper('login-page')
@@ -29,7 +25,6 @@ export class LoginPage extends Component {
   componentDidUpdate(prevProps) {
     const { gApiLoaded, signIn } = this.props
     if (prevProps.gApiLoaded !== gApiLoaded) {
-      toast.info('im ok bro')
       gApiLoaded && signIn()
     }
   }
@@ -42,9 +37,9 @@ export class LoginPage extends Component {
       <Fragment>
         {!authorized
           ? (
-            <MinimalLayout mix={cn().className}>
-              <Card mix={cn('card').className}>
-                <Logo mix={cn('logo').className} size="30px" />
+            <div {...cn()}>
+              <div {...cn('content')}>
+                <h1 {...cn('title')}>Farseer<span>News</span></h1>
                 <form {...cn('form')}>
                   <InputText
                     mix={cn('login').className}
@@ -63,7 +58,7 @@ export class LoginPage extends Component {
                   <Button type="link" to="/">Отмена</Button>
                 </form>
                 <Link {...cn('register')} to="register">Регистрация</Link>
-              </Card>
+              </div>
               <button
                 {...cn('google-sign-in')}
                 onClick={() => gApiLoaded ? signIn() : initGoogleApi()}
@@ -84,7 +79,7 @@ export class LoginPage extends Component {
                   )
                 }
               </button>
-            </MinimalLayout>
+            </div>
           )
           : <Redirect to="/" />
         }

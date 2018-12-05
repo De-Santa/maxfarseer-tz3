@@ -66,19 +66,6 @@
     }
   }
 
-  &__logo {
-    text-align: center;
-    flex: 1 1 auto;
-    font-size: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #4e4e4e;
-    user-select: none;
-    span {
-      color: #3d70b2;
-    }
-  }
-
   &__auth {
     position: absolute;
     top: 50%;

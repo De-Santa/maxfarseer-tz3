@@ -44,20 +44,22 @@ export class LoginPage extends Component {
               <Card mix={cn('card').className}>
                 <Logo mix={cn('logo').className} size="30px" />
                 <form {...cn('form')}>
+                  <div {...cn('form-fields')}>
                   <InputText
-                    mix={cn('login').className}
+                    mix={cn('form-input').className}
                     label={'Логин'}
                     //value=''
                     // onChange={this.onFieldChange('title')}
                   />
                   <InputText
-                    mix={cn('password').className}
+                    mix={cn('form-input').className}
                     label={'Пароль'}
                     //value=''
                     type="password"
                     // onChange={this.onFieldChange('title')}
                   />
-                  <Button type="submit">Вход</Button>
+                  </div>
+                  <Button mix={cn('submit').className} type="submit">Вход</Button>
                   <Button type="link" to="/">Отмена</Button>
                 </form>
                 <Link {...cn('register')} to="/sign-up">Регистрация</Link>

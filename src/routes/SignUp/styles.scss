@@ -6,13 +6,22 @@
 
   &__form {
     text-align: center;
-    a {
-      margin-left: 20px;
+    &-fields {
+      margin-bottom: 20px;
+    }
+    &-input:not(:nth-last-child(1)) {
+      margin-bottom: 20px;
     }
   }
 
-  &__password {
+  &__recaptcha {
     margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__submit {
+    margin-right: 20px;
   }
 
 }

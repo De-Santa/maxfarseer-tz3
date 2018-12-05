@@ -6,13 +6,16 @@
 
   &__form {
     text-align: center;
-    a {
-      margin-left: 20px;
+    &-fields {
+      margin-bottom: 40px;
+    }
+    &-input:not(:nth-last-child(1)) {
+      margin-bottom: 20px;
     }
   }
 
-  &__password {
-    margin-bottom: 40px;
+  &__submit {
+    margin-right: 20px;
   }
 
   &__register {

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { Redirect } from 'react-router'
 import { Button } from '../../ui/Atoms/Button'
 import { Logo } from '../../ui/Atoms/Logo'
@@ -16,6 +17,18 @@ export class SignUpPage extends Component {
     authorized: T.bool.isRequired,
   }
 
+  state = {
+    login: '',
+    password: '',
+    passwordConfirm: '',
+    recaptcha: null
+  }
+
+  onRecaptchaChange = value => {
+    this.setState({recaptcha: value})
+  }
+
+
   render() {
     const { authorized } = this.props
     return (
@@ -26,20 +39,35 @@ export class SignUpPage extends Component {
               <Card mix={cn('card').className}>
                 <Logo mix={cn('logo').className} size="30px" />
                 <form {...cn('form')}>
-                  <InputText
-                    mix={cn('login').className}
-                    label={'Логин'}
-                    //value=''
-                    // onChange={this.onFieldChange('title')}
-                  />
-                  <InputText
-                    mix={cn('password').className}
-                    label={'Пароль'}
-                    //value=''
-                    type="password"
-                    // onChange={this.onFieldChange('title')}
-                  />
-                  <Button type="submit">Зарегистрироваться</Button>
+                  <div {...cn('form-fields')}>
+                    <InputText
+                      mix={cn('form-input').className}
+                      label={'Логин'}
+                      //value=''
+                      // onChange={this.onFieldChange('title')}
+                    />
+                    <InputText
+                      mix={cn('form-input').className}
+                      label={'Пароль'}
+                      //value=''
+                      type="password"
+                      // onChange={this.onFieldChange('title')}
+                    />
+                    <InputText
+                      mix={cn('form-input').className}
+                      label={'Повторите пароль'}
+                      //value=''
+                      type="password"
+                      // onChange={this.onFieldChange('title')}
+                    />
+                  </div>
+                  <div {...cn('recaptcha')}>
+                    <ReCAPTCHA
+                      sitekey='6LfR-n4UAAAAAB0KD2Aj-MnN5opfeoIdxlRcDO-b'
+                      onChange={this.onRecaptchaChange}
+                    />
+                  </div>
+                  <Button mix={cn('submit').className} type="submit">Зарегистрироваться</Button>
                   <Button type="link" to="/login">Отмена</Button>
                 </form>
               </Card>

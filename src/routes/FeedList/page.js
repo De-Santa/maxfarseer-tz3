@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
 import { RoundButton } from '../../ui/Atoms/RoundButton'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
+import { Loader } from '../../ui/Atoms/Loader'
 import { FeedCard } from '../../ui/Molecules/FeedCard'
+import { FetchInfo } from '../../ui/Molecules/FetchInfo'
 import bemHelper from 'utils/bem-helper'
 import './styles.scss'
 
@@ -37,11 +39,11 @@ export class FeedListPage extends Component {
     } = this.props
     return (
       <div {...cn()}>
-        {loading && 'Загрузка новостей'}
-        {error && 'Ошибка при загрузке новостей'}
+        {loading && <FetchInfo message="Загрузка новостей"><Loader/></FetchInfo>}
+        {error && <FetchInfo message="Ошибка при загрузке новостей =(" />}
         {loaded && (
           feeds.length === 0
-            ? `Новостей нет =(`
+            ? <FetchInfo message="Новостей нет =(" />
             : (
                 <div {...cn('feeds-container')}>
                   {feeds.map(feed => (

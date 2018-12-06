@@ -18,6 +18,7 @@ $header-height: 90px;
     padding-top: $header-height;
     margin: 0 10px;
     & > * {
+      position: relative;
       flex: 1 1 auto;
     }
   }

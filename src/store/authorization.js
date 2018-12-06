@@ -83,7 +83,6 @@ export const googleSignIn = () => (dispatch, getState, api) => {
         })
         .catch(err => {
           console.log('backend auth error', err)
-          console.log('backend auth error', err.message)
         })
     })
 };
@@ -92,7 +91,6 @@ export const signIn = jwtToken => (dispatch, getState, api) => {
   const userId = parseJwt(jwtToken).id
   api.authorization.getUserInfo(userId, jwtToken)
     .then(res => {
-      console.log(res)
       const userInfo = {
         avatar: 'http://www.realmofdarkness.net/sb/wp-content/uploads/2015/12/desanta-02.png',
         email: '',

@@ -1,0 +1,29 @@
+.fetch-info {
+  $this: &;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  &--theme_light {
+    #{$this}__message {
+      color: #ffffff;
+    }
+  }
+
+  &--theme_dark {
+    #{$this}__message {
+      color: #222222;
+    }
+  }
+
+  &__message {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  &__extra-content {
+    margin-left: 20px;
+  }
+}

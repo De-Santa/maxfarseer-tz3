@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
+import { api } from '../../store/api';
 import ReCAPTCHA from 'react-google-recaptcha'
+import { toast } from 'react-toastify'
 import { Redirect } from 'react-router'
 import { Button } from '../../ui/Atoms/Button'
 import { Logo } from '../../ui/Atoms/Logo'
@@ -15,22 +17,43 @@ const cn = bemHelper('sign-up-page')
 export class SignUpPage extends Component {
   static propTypes = {
     authorized: T.bool.isRequired,
+    history: T.object.isRequired
   }
+
+  recaptchaRef = React.createRef()
 
   state = {
     login: '',
     password: '',
-    passwordConfirm: '',
     recaptcha: null
+  }
+
+  onFieldChange = fieldName => e => {
+    this.setState({[fieldName]: e.currentTarget.value})
   }
 
   onRecaptchaChange = value => {
     this.setState({recaptcha: value})
   }
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { login, password, recaptcha } = this.state
+    const { history } = this.props
+    api.authorization.signUp({username: login, password, "g-recaptcha-response": recaptcha})
+      .then(() => {
+        toast.success(`Пользователь ${login} успешно создан`)
+        history.push('/login')
+      })
+      .catch(err => {
+        this.recaptchaRef.current.reset()
+        toast.error(err.response.body.error)
+      })
+  }
 
   render() {
     const { authorized } = this.props
+    const { login, password } = this.state
     return (
       <Fragment>
         {!authorized
@@ -38,31 +61,25 @@ export class SignUpPage extends Component {
             <MinimalLayout mix={cn().className}>
               <Card mix={cn('card').className}>
                 <Logo mix={cn('logo').className} size="30px" />
-                <form {...cn('form')}>
+                <form {...cn('form')} onSubmit={this.onSubmit}>
                   <div {...cn('form-fields')}>
                     <InputText
                       mix={cn('form-input').className}
                       label={'Логин'}
-                      //value=''
-                      // onChange={this.onFieldChange('title')}
+                      value={login}
+                      onChange={this.onFieldChange('login')}
                     />
                     <InputText
                       mix={cn('form-input').className}
                       label={'Пароль'}
-                      //value=''
+                      value={password}
                       type="password"
-                      // onChange={this.onFieldChange('title')}
-                    />
-                    <InputText
-                      mix={cn('form-input').className}
-                      label={'Повторите пароль'}
-                      //value=''
-                      type="password"
-                      // onChange={this.onFieldChange('title')}
+                      onChange={this.onFieldChange('password')}
                     />
                   </div>
                   <div {...cn('recaptcha')}>
                     <ReCAPTCHA
+                      ref={this.recaptchaRef}
                       sitekey='6LfR-n4UAAAAAB0KD2Aj-MnN5opfeoIdxlRcDO-b'
                       onChange={this.onRecaptchaChange}
                     />

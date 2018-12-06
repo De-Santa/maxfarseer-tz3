@@ -1,7 +1,6 @@
 import React from 'react'
 import T from 'prop-types'
 import { withRouter } from 'react-router'
-import { ToastContainer, Flip } from 'react-toastify';
 import bemHelper from 'utils/bem-helper'
 import { Header } from '../../Organisms/Header'
 import { SvgSprite } from '../../Atoms/SvgSprite'
@@ -25,10 +24,6 @@ const Layout = ({ children, location: { pathname } }) => (
         </a>
       </span>
     </footer>
-    <ToastContainer
-      position="top-left"
-      transition={Flip}
-    />
   </main>
 )
 

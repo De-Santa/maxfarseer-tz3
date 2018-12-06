@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import T from 'prop-types'
+import { api } from '../../store/api'
+import { toast } from 'react-toastify'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import { SvgSprite } from '../../ui/Atoms/SvgSprite'
@@ -25,6 +27,11 @@ export class LoginPage extends Component {
     history: T.object.isRequired
   }
 
+  state = {
+    login: '',
+    password: ''
+  }
+
   componentDidUpdate(prevProps) {
     const { gApiLoaded, signIn } = this.props
     if (prevProps.gApiLoaded !== gApiLoaded) {
@@ -32,10 +39,28 @@ export class LoginPage extends Component {
     }
   }
 
+  onFieldChange = fieldName => e => {
+    this.setState({[fieldName]: e.currentTarget.value})
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { login, password } = this.state
+    api.authorization.signIn({username: login, password})
+      .then(() => {
+        toast.success('Вход збсь')
+      })
+      .catch(err => {
+        toast.error(err.response.body.error)
+      })
+  }
+
   render() {
     const {
       gApiLoading, gApiLoaded, gApiError, authorized, signIn, initGoogleApi
     } = this.props
+    const { login, password } = this.state
+
     return (
       <Fragment>
         {!authorized
@@ -43,20 +68,20 @@ export class LoginPage extends Component {
             <MinimalLayout mix={cn().className}>
               <Card mix={cn('card').className}>
                 <Logo mix={cn('logo').className} size="30px" />
-                <form {...cn('form')}>
+                <form {...cn('form')} onSubmit={this.onSubmit}>
                   <div {...cn('form-fields')}>
                   <InputText
                     mix={cn('form-input').className}
                     label={'Логин'}
-                    //value=''
-                    // onChange={this.onFieldChange('title')}
+                    value={login}
+                    onChange={this.onFieldChange('login')}
                   />
                   <InputText
                     mix={cn('form-input').className}
                     label={'Пароль'}
-                    //value=''
+                    value={password}
                     type="password"
-                    // onChange={this.onFieldChange('title')}
+                    onChange={this.onFieldChange('password')}
                   />
                   </div>
                   <Button mix={cn('submit').className} type="submit">Вход</Button>

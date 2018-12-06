@@ -4,6 +4,18 @@ const apiEndpoint = 'http://127.0.0.1:5000/api/v1'
 
 export const api = {
   authorization: {
+    signUp: data => (
+      request
+        .post(`${apiEndpoint}/users`)
+        .send(data)
+        .then(res => res)
+    ),
+    signIn: data => (
+      request
+        .post(`${apiEndpoint}/auth`)
+        .send(data)
+        .then(res => res)
+    ),
     googleSignIn: googleToken => (
       request
         .post(`${apiEndpoint}/auth/google`)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { initGoogleApi, signIn } from '../../store/authorization'
+import { initGoogleApi, googleSignIn, signIn } from '../../store/authorization'
 import { LoginPage } from './page'
 
 function mapStateToProps(state) {
@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = bindActionCreators({ initGoogleApi, signIn }, dispatch);
+  const actions = bindActionCreators({ initGoogleApi, googleSignIn, signIn }, dispatch);
   return { ...actions };
 }
 

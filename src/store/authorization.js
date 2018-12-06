@@ -60,7 +60,7 @@ export const initGoogleApi = () => dispatch => {
   _loadApi()
 };
 
-export const signIn = () => (dispatch, getState, api) => {
+export const googleSignIn = () => (dispatch, getState, api) => {
   const { authorization: { gApiInstance } } = getState()
   gApiInstance.signIn()
     .then(googleUser => {
@@ -88,8 +88,30 @@ export const signIn = () => (dispatch, getState, api) => {
     })
 };
 
+export const signIn = jwtToken => (dispatch, getState, api) => {
+  const userId = parseJwt(jwtToken).id
+  api.authorization.getUserInfo(userId, jwtToken)
+    .then(res => {
+      console.log(res)
+      const userInfo = {
+        avatar: 'http://www.realmofdarkness.net/sb/wp-content/uploads/2015/12/desanta-02.png',
+        email: '',
+        familyName: res.body.user.displayName,
+        firstName: res.body.user.displayName,
+        fullName: '',
+        id: userId
+      }
+      dispatch({ type: AUTHORIZATION + SUCCESS, data: { token: jwtToken, userInfo }})
+    })
+};
+
 export const signOut = () => (dispatch, getState) => {
   const { authorization: { gApiInstance } } = getState()
-  gApiInstance.signOut()
-    .then(() => { dispatch({ type: REMOVE + AUTHORIZATION  }) })
+  if (gApiInstance) {
+    gApiInstance.signOut()
+      .then(() => { dispatch({ type: REMOVE + AUTHORIZATION  }) })
+  } else {
+    dispatch({ type: REMOVE + AUTHORIZATION  })
+  }
+
 };

@@ -5,9 +5,9 @@ import './styles.scss'
 
 const cn = bemHelper('logo')
 
-export const Logo = ({ mix, size }) => (
+export const Logo = ({ mix, size, theme }) => (
   <p
-    {...cn(null, null, mix)}
+    {...cn(null, { theme }, mix)}
     style={{fontSize: size}}
   >
     Farseer<span>News</span>
@@ -16,9 +16,11 @@ export const Logo = ({ mix, size }) => (
 
 Logo.propTypes = {
   mix: T.string,
-  size: T.string
+  size: T.string,
+  theme: T.oneOf(['normal', 'inverse'])
 }
 Logo.defaultProps = {
   mix: '',
+  theme: 'normal',
   size: '40px'
 }

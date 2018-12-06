@@ -1,11 +1,17 @@
 .logo {
+  color: #4e4e4e;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
-  color: #4e4e4e;
   user-select: none;
-
-  span {
-    color: #3d70b2;
+  &--theme_normal {
+    span {
+      color: #3d70b2;
+    }
+  }
+  &--theme_inverse {
+    span {
+      color: #ffffff;
+    }
   }
 }

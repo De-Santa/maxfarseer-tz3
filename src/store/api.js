@@ -21,6 +21,12 @@ export const api = {
         .post(`${apiEndpoint}/auth/google`)
         .send({token: googleToken})
         .then(res => res)
+    ),
+    getUserInfo: (userId, jwtToken) => (
+      request
+        .get(`${apiEndpoint}/users/${userId}`)
+        .set('x-access-token', jwtToken)
+        .then(res => res)
     )
   },
   feeds: {

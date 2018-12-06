@@ -36,7 +36,7 @@ export default class Header extends Component {
             <span>На главную</span>
           </Link>
         )}
-        <Logo />
+        <Logo theme={isInnerRoute ? 'inverse' : 'normal'} />
         <div {...cn('auth')}>
           {authorized ? (
             <Fragment>

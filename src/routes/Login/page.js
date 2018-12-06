@@ -24,6 +24,7 @@ export class LoginPage extends Component {
     authorized: T.bool.isRequired,
     initGoogleApi: T.func.isRequired,
     signIn: T.func.isRequired,
+    googleSignIn: T.func.isRequired,
     history: T.object.isRequired
   }
 
@@ -33,9 +34,9 @@ export class LoginPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { gApiLoaded, signIn } = this.props
+    const { gApiLoaded, googleSignIn } = this.props
     if (prevProps.gApiLoaded !== gApiLoaded) {
-      gApiLoaded && signIn()
+      gApiLoaded && googleSignIn()
     }
   }
 
@@ -44,20 +45,17 @@ export class LoginPage extends Component {
   }
 
   onSubmit = e => {
+    const { signIn } = this.props
     e.preventDefault();
     const { login, password } = this.state
     api.authorization.signIn({username: login, password})
-      .then(() => {
-        toast.success('Вход збсь')
-      })
-      .catch(err => {
-        toast.error(err.response.body.error)
-      })
+      .then(res => signIn(res.body.token))
+      .catch(err => toast.error(err.response.body.error))
   }
 
   render() {
     const {
-      gApiLoading, gApiLoaded, gApiError, authorized, signIn, initGoogleApi
+      gApiLoading, gApiLoaded, gApiError, authorized, googleSignIn, initGoogleApi
     } = this.props
     const { login, password } = this.state
 
@@ -91,7 +89,7 @@ export class LoginPage extends Component {
               </Card>
               <button
                 {...cn('google-sign-in')}
-                onClick={() => gApiLoaded ? signIn() : initGoogleApi()}
+                onClick={() => gApiLoaded ? googleSignIn() : initGoogleApi()}
               >
                 <span>
                   {gApiError

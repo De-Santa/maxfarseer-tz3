@@ -1,22 +1,5 @@
 [Тестовое задание #3](https://maxpfrontend.ru/zametki/testovoe-zadanie-3/)
 
-### О себе
-
-- Топалов Герман, 29 лет, Новосибирск
-- Опыт работы с React: 1 год
-- Опыт работы Frontend разработчиком: 2 года
-
-### Вопросы
-
-- Откуда узнали о ТЗ?
-  - [ ] [VK](https://vk.com/maxpfrontend)
-  - [ ] [телеграм](https://t.me/maxpfrontend)
-  - [ ] [YouTube](https://www.youtube.com/channel/UCqJyAVWwIqPWKEkfCSP1y4Q)
-  - [x] Другое: Нашел учебник по redux и с помощью него вышел на остальные ресурсы
-- Участвовали ли в ТЗ 1 / ТЗ 2
-  - [ ] Да
-  - [x] Нет
-
 ### Чек-лист решения
 
 - [x] Авторизация через Google Sign In
